@@ -236,6 +236,6 @@ pip-selfcheck.json
 .history
 
 ### PyCharm ###
-.idea
+.idea/
 
 # End of https://www.gitignore.io/api/venv,linux,macos,django,python,visualstudiocode
