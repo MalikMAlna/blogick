@@ -10,3 +10,6 @@ class Post(models.Model):
     # can do default=timezone.now argument to allow for changeable date_posted
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_last_modifed = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
