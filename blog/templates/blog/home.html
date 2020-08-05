@@ -5,7 +5,7 @@
   <div class="media-body">
     <div class="article-metadata">
       <a class="mr-1" href="#">{{ post.author }}</a>
-      <medium>Created On: {{ post.date_posted|date:"F d, Y" }}</medium><br>
+      <small style="font-size:14px;">Created On: {{ post.date_posted|date:"F d, Y" }}</small><br>
             <small class="text-muted">Last Modified: {{ post.date_last_modified }}</small>
     </div>
     <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
