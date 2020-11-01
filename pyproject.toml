@@ -2,7 +2,7 @@
 name = "blogick"
 version = "0.0.3"
 description = "A blogging platform for myself so I can better manage the hosting of my written content."
-authors = ["Mike A. <jimalik2525@gmail.com>"]
+authors = ["Mike A. <mmikema.developer@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -10,7 +10,7 @@ django = "^3.0.8"
 django-environ = "^0.4.5"
 
 [tool.poetry.dev-dependencies]
-autopep8 = "^1.5.3"
+autopep8 = "^1.5.4"
 flake8 = "^3.8.3"
 
 [build-system]
