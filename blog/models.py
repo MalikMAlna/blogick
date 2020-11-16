@@ -1,5 +1,5 @@
-from django.contrib.auth.models import User
 from django.db import models
+from authentication.models import Account
 # from django.utils import timezone
 
 
@@ -8,7 +8,7 @@ class Post(models.Model):
     content = models.TextField()
     date_posted = models.DateTimeField(auto_now_add=True)
     # can do default=timezone.now argument to allow for changeable date_posted
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(Account, on_delete=models.CASCADE)
     date_last_modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
