@@ -1,5 +1,5 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate, login
 from .forms import (RegistrationForm,
                     # LoginForm
                     )
@@ -17,18 +17,24 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
-            display_name = form.cleaned_data.get('display_name')
-            raw_password = form.cleaned_data.get('password1')
-            account = authenticate(
-                username=username,
-                password=raw_password
-            )
-            login(request, account)
+
+            # ____ Auto-login on successful account creation _____
+
+            # username = form.cleaned_data.get('username')
+            # display_name = form.cleaned_data.get('display_name')
+            # raw_password = form.cleaned_data.get('password1')
+            # account = authenticate(
+            #     username=username,
+            #     password=raw_password
+            # )
+            # login(request, account)
             messages.success(
-                request, f"Account successfully created for {display_name}!")
+                request,
+                # f"Account successfully created for {display_name}! " +
+                "Please log in with your new account credentials."
+            )
             return HttpResponseRedirect(
-                request.GET.get('next', reverse('blog-home'))
+                request.GET.get('next', reverse('login'))
             )
         else:
             context['registration_form'] = form
