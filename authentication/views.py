@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import (RegistrationForm,
-                    # LoginForm
+                    LoginForm
                     )
 from django.contrib import messages
 
@@ -36,3 +36,34 @@ def register(request):
         form = RegistrationForm()
         context['registration_form'] = form
     return render(request, html, {"form": form})
+
+
+def loginview(request):
+    html = 'login.html'
+    context = {}
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = authenticate(
+                request,
+                username=data['username'],
+                password=data['password'],
+            )
+            if user:
+                login(request, user)
+                return HttpResponseRedirect(
+                    request.GET.get('next', reverse('homepage'))
+                )
+        else:
+            context['login_form'] = form
+    else:
+        form = LoginForm()
+        context['login_form'] = form
+    return render(request, html, context)
+
+
+def logoutview(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return HttpResponseRedirect(reverse('homepage'))
