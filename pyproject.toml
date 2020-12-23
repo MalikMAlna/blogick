@@ -8,6 +8,7 @@ authors = ["Mike A. <mmikema.developer@gmail.com>"]
 python = "^3.8"
 django = "^3.0.8"
 django-environ = "^0.4.5"
+django-crispy-forms = "^1.10.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.4"
