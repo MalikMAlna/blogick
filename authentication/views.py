@@ -4,6 +4,7 @@ from .forms import (RegistrationForm,
                     # LoginForm
                     )
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # def register(request):
@@ -44,6 +45,7 @@ def register(request):
     return render(request, html, {"form": form})
 
 
+@login_required
 def profile(request):
     html = 'authentication/profile.html'
     return render(request, html)
