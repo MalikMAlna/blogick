@@ -44,6 +44,13 @@ def register(request):
     return render(request, html, {"form": form})
 
 
+def profile(request):
+    html = 'authentication/profile.html'
+    return render(request, html)
+
+
+# Custom Login/Logout Views
+
 # def loginview(request):
 #     html = 'login.html'
 #     context = {}
