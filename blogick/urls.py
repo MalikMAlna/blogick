@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from authentication import views as account_views
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
@@ -26,12 +28,15 @@ urlpatterns = [
          name="register"),
     path('login/', auth_views.LoginView.as_view(
         template_name='authentication/login.html'),
-        name="login"),
+         name="login"),
     path('logout/', auth_views.LogoutView.as_view(
         template_name='authentication/logout.html'),
-        name="logout"),
+         name="logout"),
     path('profile/',
          account_views.profile,
          name="profile"),
     path('', include('blog.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
