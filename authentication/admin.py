@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account
+from .models import Account, Profile
 from django.contrib.auth.admin import UserAdmin
 
 # https://www.youtube.com/
@@ -17,4 +17,5 @@ class AccountAdmin(UserAdmin):
     fieldsets = ()
 
 
+admin.site.register(Profile)
 admin.site.register(Account, AccountAdmin)

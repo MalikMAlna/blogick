@@ -82,5 +82,6 @@ class Profile(models.Model):
     account = models.OneToOneField(Account, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
 
-    def __str___(self):
-        return f"{self.account.username}'s Profile"
+    def __str__(self):
+        return f"{self.account.username.title()}'s Profile"
+
