@@ -3,6 +3,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin)
+from PIL import Image as Img
 
 
 # Code Citation: https://www.youtube.com/watch?v=eCeRC7E8Z7Y
@@ -87,3 +88,10 @@ class Profile(models.Model):
             return f"{self.account.display_name.title()}'s Profile"
         return f"{self.account.username.title()}'s Profile"
 
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
+        img = Img.open(self.image.path)
+        if img.height > 250 or img.width > 250:
+            new_img_size = (250, 250)
+            img.thumbnail(new_img_size)
+            img.save(self.image.path)

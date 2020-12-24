@@ -50,8 +50,23 @@ def register(request):
 @login_required
 def profile(request):
     html = 'authentication/profile.html'
-    au_form = AccountUpdateForm()
-    pu_form = ProfileUpdateForm()
+    if request.method == 'POST':
+        au_form = AccountUpdateForm(request.POST, instance=request.user)
+        pu_form = ProfileUpdateForm(request.POST,
+                                    request.FILES,
+                                    instance=request.user.profile)
+        if au_form.is_valid() and pu_form.is_valid():
+            au_form.save()
+            pu_form.save()
+            messages.success(
+                request, "Your account has been successfully updated!"
+            )
+            return HttpResponseRedirect(
+                request.GET.get('next', reverse('profile'))
+            )
+    else:
+        au_form = AccountUpdateForm(instance=request.user)
+        pu_form = ProfileUpdateForm(instance=request.user.profile)
     context = {
         'au_form': au_form,
         'pu_form': pu_form
