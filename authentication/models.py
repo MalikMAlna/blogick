@@ -4,6 +4,7 @@ from django.contrib.auth.models import (
     BaseUserManager,
     PermissionsMixin)
 
+
 # Code Citation: https://www.youtube.com/watch?v=eCeRC7E8Z7Y
 
 
@@ -74,3 +75,12 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def has_module_perms(self, app_label):
         return True
+
+
+# Profile for Account
+class Profile(models.Model):
+    account = models.OneToOneField(Account, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
+
+    def __str___(self):
+        return f"{self.account.username}'s Profile"
