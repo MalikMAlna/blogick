@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 
-# posts = [
+# posts_stub = [
 #     {
 #         'author': 'Mike A.',
 #         'title': 'First Blog Post',
