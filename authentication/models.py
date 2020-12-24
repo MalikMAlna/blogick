@@ -83,5 +83,8 @@ class Profile(models.Model):
     image = models.ImageField(default='default.png', upload_to='profile_pics')
 
     def __str__(self):
-        return f"{self.account.username.title()}'s Profile"
+        if self.account.display_name:
+            return f"{self.account.display_name.title()}'s Profile"
+        else:
+            return f"{self.account.username.title()}'s Profile"
 
