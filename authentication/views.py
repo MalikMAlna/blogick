@@ -1,6 +1,8 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 # from django.contrib.auth import authenticate, login
 from .forms import (RegistrationForm,
+                    AccountUpdateForm,
+                    ProfileUpdateForm,
                     # LoginForm
                     )
 from django.contrib import messages
@@ -48,7 +50,13 @@ def register(request):
 @login_required
 def profile(request):
     html = 'authentication/profile.html'
-    return render(request, html)
+    au_form = AccountUpdateForm()
+    pu_form = ProfileUpdateForm()
+    context = {
+        'au_form': au_form,
+        'pu_form': pu_form
+    }
+    return render(request, html, context)
 
 
 # Custom Login/Logout Views
