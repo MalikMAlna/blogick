@@ -85,6 +85,5 @@ class Profile(models.Model):
     def __str__(self):
         if self.account.display_name:
             return f"{self.account.display_name.title()}'s Profile"
-        else:
-            return f"{self.account.username.title()}'s Profile"
+        return f"{self.account.username.title()}'s Profile"
 
