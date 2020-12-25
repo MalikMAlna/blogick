@@ -85,6 +85,9 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     template_name = 'blog/post-delete-confirm.html'
+    # Default context_object_name is object
+    context_object_name = 'post'
+    success_url = '/'
 
     def test_func(self):
         post = self.get_object()
