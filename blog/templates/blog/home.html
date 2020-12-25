@@ -16,7 +16,7 @@
     </div>
     <h2>
       <a class="article-title" href="{% url 'post-detail' post.pk %}"
-        >{{ post.title }}</a
+        >{{ post.title.title }}</a
       >
     </h2>
     <p class="article-content">{{ post.content }}</p>
