@@ -59,7 +59,25 @@ def profile(request):
             au_form.save()
             pu_form.save()
             messages.success(
-                request, "Your account has been successfully updated!"
+                request,
+                "Your account and profile info" +
+                "have been successfully updated!"
+            )
+            return HttpResponseRedirect(
+                request.GET.get('next', reverse('profile'))
+            )
+        elif au_form.is_valid() and not pu_form.is_valid():
+            au_form.save()
+            messages.success(
+                request, "Your account info has been successfully updated!"
+            )
+            return HttpResponseRedirect(
+                request.GET.get('next', reverse('profile'))
+            )
+        elif pu_form.is_valid() and not au_form.is_valid():
+            pu_form.save()
+            messages.success(
+                request, "Your profile info has been successfully updated!"
             )
             return HttpResponseRedirect(
                 request.GET.get('next', reverse('profile'))
