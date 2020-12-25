@@ -8,6 +8,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
+    DeleteView,
 )
 from .models import Post
 
@@ -79,6 +80,13 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == post.author:
             return True
         return False
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'blog/post.html'
+    # Default context_object_name is object
+    context_object_name = 'post'
 
 
 def about(request):
