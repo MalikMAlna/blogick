@@ -16,6 +16,20 @@
     </div>
     <h2 class="article-title">{{ post.title.title }}</h2>
     <p class="article-content">{{ post.content }}</p>
+    {% if post.author == user %}
+    <a
+      class="btn btn-secondary btn-sm mt-3 mb-1"
+      href="{% url 'post-edit' post.pk %}"
+    >
+      Edit Post
+    </a>
+    <a
+      class="btn btn-danger btn-sm mt-3 mb-1"
+      href="{% url 'post-delete' post.pk %}"
+    >
+      Delete Post
+    </a>
+    {% endif %}
   </div>
 </article>
 {% endblock content %}

@@ -53,8 +53,9 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
             {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'post-write' %}">Write A Post</a>
               {% if user.display_name %}
-            <a class="nav-item nav-link" href="{% url 'profile' %}">{{user.display_name.title}}'s Profile</a>
+              <a class="nav-item nav-link" href="{% url 'profile' %}">{{user.display_name.title}}'s Profile</a>
               {% else %}
               <a class="nav-item nav-link" href="{% url 'profile' %}">My Profile</a>
               {% endif %}
