@@ -1,8 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView
+    CreateView,
+    UpdateView,
 )
 from .models import Post
 
@@ -47,7 +49,18 @@ class PostDetailView(DetailView):
     context_object_name = 'post'
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    # Default template_name <app_name>/<model_name>_form.html
+    template_name = 'blog/post-write.html'
+    fields = ('title', 'content')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     # Default template_name <app_name>/<model_name>_form.html
     template_name = 'blog/post-write.html'
