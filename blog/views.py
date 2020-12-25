@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
 from .models import Post
 
 # posts_stub = [
@@ -41,6 +45,11 @@ class PostDetailView(DetailView):
     template_name = 'blog/post.html'
     # Default context_object_name is object
     context_object_name = 'post'
+
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ('title', 'content')
 
 
 def about(request):
