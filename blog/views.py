@@ -49,6 +49,8 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
+    # Default template_name <app_name>/<model_name>_form.html
+    template_name = 'blog/post-write.html'
     fields = ('title', 'content')
 
 
