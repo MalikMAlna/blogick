@@ -82,11 +82,16 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    template_name = 'blog/post.html'
-    # Default context_object_name is object
-    context_object_name = 'post'
+    template_name = 'blog/post-delete-confirm.html'
+
+    def test_func(self):
+        post = self.get_object()
+
+        if self.request.user == post.author:
+            return True
+        return False
 
 
 def about(request):
