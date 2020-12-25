@@ -11,8 +11,7 @@
       {% else %}
       <h2 class="account-heading">{{ user.username.title }}'s Profile</h2>
       {% endif %}
-      <p class="text-secondary">{{ user.username }}</p>
-      <p class="text-secondary">{{ user.email }}</p>
+      <p class="text-secondary">{{ user.username }} | {{ user.email }}</p>
     </div>
   </div>
   <form method="POST" enctype="multipart/form-data">
