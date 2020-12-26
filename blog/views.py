@@ -44,7 +44,7 @@ class PostListView(ListView):
     context_object_name = 'posts'
     # Newest to oldest by date posted
     ordering = ['-date_posted']
-    paginate_by = 2
+    paginate_by = 5
 
 
 class PostDetailView(DetailView):
