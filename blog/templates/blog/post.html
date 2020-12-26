@@ -6,7 +6,9 @@
   />
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-1" href="#">{{ post.author }}</a>
+      <a class="mr-1" href="{% url 'profile-detail' post.author.profile.pk %}"
+        >{{ post.author }}</a
+      >
       <small style="font-size: 14px"
         >Created On: {{ post.date_posted|date:"F d, Y" }}</small
       ><br />
