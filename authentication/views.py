@@ -77,6 +77,8 @@ def profile(request):
         'au_form': au_form,
         'pu_form': pu_form
     }
+    context["account_post_count"] = Post.objects.filter(
+        author=request.user).count()
     return render(request, html, context)
 
 
