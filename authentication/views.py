@@ -5,6 +5,7 @@ from .forms import (RegistrationForm,
                     ProfileUpdateForm,
                     # LoginForm
                     )
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -92,7 +93,17 @@ class ProfileDetailView(LoginRequiredMixin, DetailView):
         context["profile"] = self.get_object()
         context["account_post_count"] = Post.objects.filter(
             author=self.get_object().account).count()
+        context["posts"] = self.get_paginated_posts()
         return context
+
+    def get_paginated_posts(self):
+        posts = Post.objects.filter(
+            author=self.get_object().account).order_by('-date_posted')
+        paginator = Paginator(posts, 3)
+        page = self.request.GET.get('page')
+        paginated_posts = paginator.get_page(page)
+        return paginated_posts
+
 
 # Custom Login/Logout Views
 
