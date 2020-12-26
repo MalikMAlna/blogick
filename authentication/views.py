@@ -78,8 +78,17 @@ def profile(request):
         'au_form': au_form,
         'pu_form': pu_form
     }
+
     context["account_post_count"] = Post.objects.filter(
         author=request.user).count()
+
+    posts = Post.objects.filter(
+        author=request.user).order_by('-date_posted')
+    paginator = Paginator(posts, 3)
+    page = request.GET.get('page')
+    paginated_posts = paginator.get_page(page)
+    context["posts"] = paginated_posts
+
     return render(request, html, context)
 
 
