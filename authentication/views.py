@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 from .models import Profile
+from blog.models import Post
 
 
 # def register(request):
@@ -82,7 +83,14 @@ def profile(request):
 class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'authentication/other-profile.html'
-    context_object_name = 'profile'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ProfileDetailView, self).get_context_data(
+            *args, **kwargs)
+        context["profile"] = self.get_object()
+        context["account_post_count"] = Post.objects.filter(
+            author=self.get_object().account).count()
+        return context
 
 # Custom Login/Logout Views
 
