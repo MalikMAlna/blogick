@@ -32,6 +32,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(
         template_name='authentication/logout.html'),
         name="logout"),
+    path('password-reset/', auth_views.PasswordResetView.as_view(
+        template_name='authentication/password-reset.html'),
+        name="password-reset"),
     path('profile/<int:pk>/',
          account_views.ProfileDetailView.as_view(),
          name="profile-detail"),
