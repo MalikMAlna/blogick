@@ -42,6 +42,10 @@ urlpatterns = [
          auth_views.PasswordResetConfirmView.as_view(
              template_name='authentication/password-reset-confirmation.html'),
          name="password_reset_confirm"),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(
+             template_name='authentication/password-reset-complete.html'),
+         name="password_reset_complete"),
     path('profile/<int:pk>/',
          account_views.ProfileDetailView.as_view(),
          name="profile-detail"),
