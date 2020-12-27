@@ -37,11 +37,11 @@ urlpatterns = [
         name="password-reset"),
     path('password-reset/success/', auth_views.PasswordResetDoneView.as_view(
         template_name='authentication/password-reset-success.html'),
-        name="password-reset-success"),
-    path('password-reset-confirmation/<uidb64>/<token>/',
+        name="password_reset_done"),
+    path('password-reset-confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(
              template_name='authentication/password-reset-confirmation.html'),
-         name="password-reset-confirmation"),
+         name="password_reset_confirm"),
     path('profile/<int:pk>/',
          account_views.ProfileDetailView.as_view(),
          name="profile-detail"),
