@@ -96,11 +96,11 @@ class Profile(models.Model):
         img = Img.open(img_read)
 
         if img.height > 250 or img.width > 250:
-            new_img_size = (250, 250)
-            img.thumbnail(new_img_size)
+            output_size = (250, 250)
+            img.thumbnail(output_size)
             in_mem_file = io.BytesIO()
             img.convert('RGB').save(in_mem_file, format='JPEG')
-            img_write = storage.open(self.image.name, 'w+')
+            img_write = storage.open(self.image.name, 'wb+')
             img_write.write(in_mem_file.getvalue())
             img_write.close()
 
