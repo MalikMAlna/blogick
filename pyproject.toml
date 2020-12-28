@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "blogick"
-version = "0.0.3"
+version = "1.0.0"
 description = "A blogging platform for myself so I can better manage the hosting of my written content."
 authors = ["Mike A. <mmikema.developer@gmail.com>"]
 
