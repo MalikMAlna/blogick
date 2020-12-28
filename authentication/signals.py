@@ -23,12 +23,12 @@ def delete_old_profile_file(sender, instance, **kwargs):
         return False
 
     # comparing the new file with the old one
-    file = instance.image.url
+    initial_file = instance.image.url
 
     # determining base directory where file is present
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    if not old_file == file and not old_file == '/media/default.png':
+    if not old_file == initial_file and not old_file == '/media/default.png':
         # print("building path to old file from", base_dir)
         full_old_file_path = os.path.join(base_dir, old_file[1:])
         # print("old file detected at", old_file)

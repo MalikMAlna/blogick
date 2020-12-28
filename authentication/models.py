@@ -94,13 +94,15 @@ class Profile(models.Model):
         super(Profile, self).save(*args, **kwargs)
         img_read = storage.open(self.image.name, 'rb')
         img = Img.open(img_read)
+        print(img.height, img.width)
 
         if img.height > 250 or img.width > 250:
+            print("resizing image")
             output_size = (250, 250)
             img.thumbnail(output_size)
             in_mem_file = io.BytesIO()
             img.convert('RGB').save(in_mem_file, format='JPEG')
-            img_write = storage.open(self.image.name, 'wb+')
+            img_write = storage.open(self.image.name, 'w+')
             img_write.write(in_mem_file.getvalue())
             img_write.close()
 
