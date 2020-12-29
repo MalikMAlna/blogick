@@ -39,7 +39,7 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['54.83.125.254']
+ALLOWED_HOSTS = ['54.144.99.123']
 
 mimetypes.add_type("text/css", ".css", True)
 # mimetypes.add_type("text/html", ".css", True)
