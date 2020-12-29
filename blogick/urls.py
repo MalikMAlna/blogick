@@ -53,7 +53,7 @@ urlpatterns = [
          account_views.profile,
          name="profile"),
     path('', include('blog.urls')),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
