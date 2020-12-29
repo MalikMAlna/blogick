@@ -37,7 +37,7 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['django-blog-app4321.herokuapp.com']
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("text/html", ".css", True)
