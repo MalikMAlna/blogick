@@ -36,7 +36,7 @@ DEBUG = env('DEBUG')
 
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ['django-blog-env.eba-wykgfrxx.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['54.83.125.254']
 
 
 # Application definition
