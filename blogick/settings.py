@@ -30,12 +30,12 @@ env = environ.Env(
 environ.Env.read_env()
 
 # False if not in os.environ
-DEBUG = env('DEBUG')
+DEBUG = os.environ.get('DEBUG')
 
 # Raises django's ImproperlyConfigured exception
 # if SECRET_KEY not in os.environ
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 ALLOWED_HOSTS = ['django-blog-app4321.herokuapp.com']
 
