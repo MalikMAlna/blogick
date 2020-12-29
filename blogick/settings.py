@@ -43,6 +43,9 @@ ALLOWED_HOSTS = ['54.144.99.123']
 
 mimetypes.add_type("text/css", ".css", True)
 mimetypes.add_type("text/html", ".css", True)
+mimetypes.add_type('text/javascript', ".css", True)
+mimetypes.add_type('application/javascript', ".css", True)
+
 
 # Application definition
 
