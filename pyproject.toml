@@ -5,7 +5,7 @@ description = "A blogging platform for myself so I can better manage the hosting
 authors = ["Mike A. <mmikema.developer@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8.2"
 django = "^3.0.8"
 django-environ = "^0.4.5"
 django-crispy-forms = "^1.10.0"
