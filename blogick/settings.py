@@ -30,7 +30,7 @@ env = environ.Env(
 environ.Env.read_env()
 
 # False if not in os.environ
-DEBUG = os.environ.get('DEBUG')
+DEBUG = (os.environ.get('DEBUG') == "True")
 
 # Raises django's ImproperlyConfigured exception
 # if SECRET_KEY not in os.environ
